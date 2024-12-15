@@ -14,6 +14,8 @@ from datetime import datetime  # Import datetime module
 import base64
 from dotenv import load_dotenv
 import os
+from flask_sqlalchemy import SQLAlchemy
+
 
 # Load environment variables from the .env file
 load_dotenv(dotenv_path='./backend/.env')
@@ -22,6 +24,12 @@ admin_id = os.getenv('APP_PORT')
 
 app = Flask(__name__)
 CORS(app)
+
+
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
 
 analyzer = SentimentIntensityAnalyzer()
 
