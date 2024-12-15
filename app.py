@@ -18,7 +18,6 @@ import os
 # Load environment variables from the .env file
 load_dotenv(dotenv_path='./backend/.env')
 admin_id = os.getenv('APP_PORT')
-admin_id = int(admin_id)
 
 
 app = Flask(__name__)
